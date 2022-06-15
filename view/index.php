@@ -15,7 +15,6 @@
             <img  src="images/logo.png" alt="">
             <h2>はーとふるエステート</h2>
         </div>
-
         <div class="items">
             <li><i class="fa-solid fa-house"></i><a href="#">ホーム</a></li>
             <li><i class="fa-regular fa-building"></i><a href="#">マンション</a></li>
@@ -25,9 +24,7 @@
             <li></li>
             <li></li>
         </div>
-
     </section> 
-
     <section id="interface">
         <div class="navigation">
             <div class="n1">
@@ -39,7 +36,6 @@
                     <input type="text" placeholder="Search">
                 </div>
             </div>
-
             <div class="profile">
                 <i class="far fa-bell"></i>
                 <img src="images/cat.jpg" alt="">   
@@ -74,7 +70,7 @@
                     <span>New Users</span>
                 </div>
             </div>
-            
+
             <div class="val-box">
                 <i class="fas fa-users"></i>
                 <div>
@@ -103,7 +99,6 @@
                                 <p>souutan</p>
                             </div>
                         </td>
-
                         <td class="people">
                             <h5>Software Engineer</h5>
                             <p>Wev dev</p>
@@ -117,7 +112,6 @@
 
                         <td class="edit"><a href="#">Edit</a></td>
                     </tr>
-
                     <tr>
                         <td class="people">
                             <img src="images/cat.jpg" alt="">
@@ -126,7 +120,6 @@
                                 <p>runatan</p>
                             </div>
                         </td>
-
                         <td class="people">
                             <h5>Software Engineer</h5>
                             <p>Wev dev</p>
@@ -140,7 +133,6 @@
 
                         <td class="edit"><a href="#">Edit</a></td>
                     </tr>
-
                     <tr>
                         <td class="people">
                             <img src="images/cat.jpg" alt="">
@@ -149,7 +141,6 @@
                                 <p>teratan</p>
                             </div>
                         </td>
-
                         <td class="people">
                             <h5>Software Engineer</h5>
                             <p>Wev dev</p>
@@ -166,10 +157,6 @@
                 </tbody>
             </table>
         </dir>
-
-        
-
-
     </section>
 
     <script>
@@ -177,9 +164,5 @@
             $('#menu').toggleClass("active");
         })
     </script>
-
-
-
-
 </body>
 </html>
