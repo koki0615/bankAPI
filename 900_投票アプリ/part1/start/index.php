@@ -10,6 +10,8 @@ require_once SOURCE_BASE . 'libs/auth.php';
 //Model
 require_once SOURCE_BASE . 'models/abstract.model.php';
 require_once SOURCE_BASE . 'models/user.model.php';
+require_once SOURCE_BASE . 'models/mansion.model.php';
+require_once SOURCE_BASE . 'models/resident.model.php';
 // require_once SOURCE_BASE . 'models/topic.model.php';
 
 //Message
@@ -18,6 +20,8 @@ require_once SOURCE_BASE . 'libs/message.php';
 //DB
 require_once SOURCE_BASE . 'db/datasource.php';
 require_once SOURCE_BASE . 'db/user.query.php';
+require_once SOURCE_BASE . 'db/mansion.query.php';
+require_once SOURCE_BASE . 'db/resident.query.php';
 
 //partials
 require_once SOURCE_BASE . 'partials/header.php';
@@ -27,6 +31,8 @@ require_once SOURCE_BASE . 'partials/footer.php';
 require_once SOURCE_BASE .  'views/home.php';
 require_once SOURCE_BASE .  'views/login.php';
 require_once SOURCE_BASE .  'views/register.php';
+require_once SOURCE_BASE .  'views/mansion.php';
+require_once SOURCE_BASE .  'views/resident.php';
 
 
 use function lib\route;
