@@ -17,7 +17,7 @@ class ResidentQuery {
             
         ], DataSource::CLS, MansionModel::class);
 
-        return $result;
+        return $result; 
 
     }
     
