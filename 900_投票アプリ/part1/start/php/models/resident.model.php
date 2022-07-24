@@ -7,12 +7,20 @@ use lib\Msg;
 class ResidentModel extends AbstractModel
 {
 
-    public int $id;
-    public string $name;
-    public string $adress;
-    public int $del_flg;
 
-    protected static $SESSION_NAME = '_mansion';
+    public int $id;
+    public int $room_id;
+    public string $name;
+    public string $account_name;
+    public int $rent;
+    public int $flag;
+    public string $update_day;
+    public int $frequency;
+    public int $commission;
+    public string $guarantee;
+    
+
+
 
     public function isValidId()
     {
@@ -47,38 +55,38 @@ class ResidentModel extends AbstractModel
 
     
 
-    public static function validatePwd($val)
-    {
-        $res = true;
+    // public static function validatePwd($val)
+    // {
+    //     $res = true;
 
-        if (empty($val)) {
+    //     if (empty($val)) {
 
-            Msg::push(Msg::ERROR, 'パスワードを入力してください。');
-            $res = false;
+    //         Msg::push(Msg::ERROR, 'パスワードを入力してください。');
+    //         $res = false;
 
-        } else {
+    //     } else {
 
-            if(strlen($val) < 4) {
+    //         if(strlen($val) < 4) {
 
-                Msg::push(Msg::ERROR, 'パスワードは４桁以上で入力してください。');
-                $res = false;
+    //             Msg::push(Msg::ERROR, 'パスワードは４桁以上で入力してください。');
+    //             $res = false;
 
-            } 
+    //         } 
             
-            if(!is_alnum($val)) {
+    //         if(!is_alnum($val)) {
 
-                Msg::push(Msg::ERROR, 'パスワードは半角英数字で入力してください。');
-                $res = false;
+    //             Msg::push(Msg::ERROR, 'パスワードは半角英数字で入力してください。');
+    //             $res = false;
 
-            }
-        }
+    //         }
+    //     }
 
-        return $res;
-    }
+    //     return $res;
+    // }
 
-    public function isValidPwd()
-    {
-        return static::validatePwd($this->pwd);
-    }
+    // public function isValidPwd()
+    // {
+    //     return static::validatePwd($this->pwd);
+    // }
 
 }

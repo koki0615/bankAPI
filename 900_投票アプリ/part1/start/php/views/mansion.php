@@ -59,7 +59,7 @@ function index($mansions) {
                         </td>
                         <td class="">
                             <h3>
-                               <a href="<?php echo $mansion_url; ?>"><?php echo $mansion_url . $mansion->name; ?></a> 
+                               <a href="<?php echo $mansion_url; ?>"><?php echo $mansion->name; ?></a> 
                             </h3>
                         </td>
                     </tr>

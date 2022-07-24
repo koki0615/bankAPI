@@ -7,7 +7,9 @@ use model\MansionModel;
 
 function get() {
 
+
     Auth::requireLogin();
+    $mansions = new MansionModel;
 
     $mansions = MansionQuery::fetchByMansionId();
     \view\mansion\index($mansions);

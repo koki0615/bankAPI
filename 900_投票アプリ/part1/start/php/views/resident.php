@@ -1,9 +1,7 @@
 <?php 
 namespace view\resident;
 
-
-
-function index($mansion) {
+function index($residents,$mansion) {
 ?>
     <body>
     <section id="menu">
@@ -40,34 +38,42 @@ function index($mansion) {
 
 
         <h3 class="i-name">
-            管理物件
+            <?php echo $mansion->name ?>
         </h3>
 
         
         <div class="board">
             <table width="100%">
                 <thead>
-                    <td>写真</td>
-                    <td>物件名</td>
+                    <td>氏名</td>
+                    <td>家賃</td>
+                    <td>更新日</td>
                 </thead>
                 <?php 
-                
+                foreach ($residents as $resident) {
                 ?>
                     <tbody>
                     <tr>
                         <td class="">
-                            <img src="<?php echo BASE_IMAGE_PATH; ?>cat.jpg" alt="">
+                            <h3>
+                                <?php echo $resident->name ?>
+                            </h3>
                         </td>
                         <td class="">
                             <h3>
-                               <a href="<?php  ?>"><?php echo $mansion->id . $mansion->name; ?></a> 
+                               <?php echo  $resident->rent; ?>
+                            </h3>
+                        </td>
+                        <td class="">
+                            <h3>
+                               <?php echo  $resident->update_day; ?>
                             </h3>
                         </td>
                     </tr>
                 </tbody>
-                <?php 
                 
-                ?>
+                <?php 
+                } ?>
             </table>
         </div>
     </section>

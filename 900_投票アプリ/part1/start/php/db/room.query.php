@@ -2,40 +2,37 @@
 namespace db;
 
 use db\DataSource;
-use model\MansionModel;
+use model\RoomModel;
 
-class MansionQuery {
+class RoomQuery {
     //データベースからidをもとに値を取得する関数
-    public static function fetchByMansionId() {
+    public static function fetchByRoomId($rooms) {
 
         
 
         $db = new DataSource;
-        $sql = 'select * from mansion;';
+        $sql = 'select room.room_id from room 
+        where room.mansion_id = :id 
+        ;';
 
         $result = $db->select($sql, [
-            
-        ], DataSource::CLS, MansionModel::class);
+            ':id' => $rooms->mansion_id
+        ], DataSource::CLS, RoomModel::class);
 
         return $result;
 
     }
-    
-    public static function fetchByname($mansion) {
 
-        
+    public static function room() {
 
         $db = new DataSource;
-        $sql = '
-        select name from mansion m
-        where m.id = :id';
+        $sql = 'select * from room;';
 
-        $result = $db->selectOne($sql, [
-            ':id' => $mansion->id
-        ], DataSource::CLS, MansionModel::class);
+        $result = $db->select($sql, [
 
+        ], DataSource::CLS, RoomModel::class);
+        
         return $result;
-
     }
 
     

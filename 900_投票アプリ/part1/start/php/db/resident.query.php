@@ -6,37 +6,57 @@ use model\ResidentModel;
 
 class ResidentQuery {
     //データベースからidをもとに値を取得する関数
-    public static function fetchResidentId() {
-
-        
-
-        $db = new DataSource;
-        $sql = 'select * from mansion;';
-
-        $result = $db->select($sql, [
-            
-        ], DataSource::CLS, MansionModel::class);
-
-        return $result;
-
-    }
-    
-    public static function fetchById($mansion) {
+    public static function fetchResidentId($rooms) {
 
         
 
         $db = new DataSource;
         $sql = '
-        select * from mansion m
-        where m.id = :id';
+        select
+            resident.*
+        from resident
+        inner join room
+            on resident.room_id = room.room_id
+        where room.mansion_id = :id 
+        ;';
 
-        $result = $db->selectOne($sql, [
-            ':id' => $mansion->id
-        ], DataSource::CLS, MansionModel::class);
+        $result = $db->select($sql, [
+            ':id' => $rooms->mansion_id
+        ], DataSource::CLS, ResidentModel::class);
 
         return $result;
 
     }
+
+    // public static function room() {
+
+    //     $db = new DataSource;
+    //     $sql = 'select * from room;';
+
+    //     $result = $db->select($sql, [
+
+    //     ], DataSource::CLS, RoomModel::class);
+        
+    //     return $result;
+    // }
+    
+    // public static function fetchById() {
+
+        
+
+    //     $db = new DataSource;
+    //     $sql = '
+    //     select name from resident ';
+
+    //     $result = $db->select($sql, [
+            
+    //     ], DataSource::CLS, ResidentModel::class);
+
+    //     return $result;
+
+    // }
+
+    
 
     
 
