@@ -2,7 +2,9 @@
 
 namespace lib;
 
+use db\ResidentQuery;
 use db\UserQuery;
+use model\ResidentModel;
 use model\UserModel;
 use Throwable;
 
@@ -41,43 +43,6 @@ class Auth
         return $is_success;
     }
 
-    public static function regist($user)
-    {
-        try {
-            if (!($user->isValidId()
-                * $user->isValidPwd()
-                * $user->isValidNickname())) {
-                return false;
-            }
-
-            $is_success = false;
-
-            $exist_user = UserQuery::fetchById($user->id);
-
-            if (!empty($exist_user)) {
-
-                Msg::push(Msg::ERROR, 'ユーザーがすでに存在します。');
-                return false;
-
-            }
-
-            $is_success = UserQuery::insert($user);
-
-            if ($is_success) {
-
-                UserModel::setSession($user);
-
-            }
-
-        } catch (Throwable $e) {
-
-            $is_success = false;
-            Msg::push(Msg::DEBUG, $e->getMessage());
-            Msg::push(Msg::ERROR, 'ユーザー登録でエラーが発生しました。少し時間をおいてから再度お試しください。');
-        }
-
-        return $is_success;
-    }
 
     public static function isLogin()
     {
@@ -118,6 +83,33 @@ class Auth
         if(!static::isLogin()) {
             Msg::push(Msg::ERROR, 'ログインしてください。');
             redirect('login');
+        }
+    }
+
+    public static function regist($resident)
+    {
+        try {
+            $is_success = false;
+
+            $exist_resident = ResidentQuery::fetchRoomId($resident);
+
+            if (!empty($exist_resident)) {
+
+                Msg::push(Msg::ERROR, 'この部屋は空いていません。');
+                return false;
+            }
+
+            $is_success = ResidentQuery::insert($resident);
+
+            if ($is_success) {
+                
+                ResidentModel::setSession($resident);
+            }
+        } catch (Throwable $e) {
+
+            $is_success = false;
+            Msg::push(Msg::DEBUG, $e->getMessage());
+            Msg::push(Msg::ERROR, '居住者登録でエラーが発生しました。少し時間をおいてから再度お試しください。');
         }
     }
 }

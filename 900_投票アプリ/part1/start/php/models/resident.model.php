@@ -20,6 +20,7 @@ class ResidentModel extends AbstractModel
     public string $guarantee;
     
 
+    protected static $SESSION_NAME = '_resident';
 
 
     public function isValidId()
@@ -33,13 +34,13 @@ class ResidentModel extends AbstractModel
 
         if(empty($val)) {
 
-            Msg::push(Msg::ERROR, 'ユーザーIDを入力してください。');
+            Msg::push(Msg::ERROR, 'IDを入力してください。');
             $res = false;
 
         } else {
 
             if(strlen($val) > 10) {
-                Msg::push(Msg::ERROR, 'ユーザーIDは１０桁以下で入力してください。');
+                Msg::push(Msg::ERROR, '部屋IDは１０桁以下で入力してください。');
                 $res = false;
             }
 
@@ -53,6 +54,7 @@ class ResidentModel extends AbstractModel
         return $res;
     }
 
+    
     
 
     // public static function validatePwd($val)

@@ -40,39 +40,48 @@ class ResidentQuery {
     //     return $result;
     // }
     
-    // public static function fetchById() {
+    public static function fetchRoomId($resident) {
 
         
 
-    //     $db = new DataSource;
-    //     $sql = '
-    //     select name from resident ';
+        $db = new DataSource;
+        $sql = '
+        select name from resident 
+        where resident.room_id = :id
+        ';
 
-    //     $result = $db->select($sql, [
-            
-    //     ], DataSource::CLS, ResidentModel::class);
+        $result = $db->select($sql, [
+            ':id' => $resident->room_id
+        ], DataSource::CLS, ResidentModel::class);
 
-    //     return $result;
+        return $result;
 
-    // }
+    }
 
     
 
     
 
-    // public static function insert($user) {
+    public static function insert($resident) {
 
-    //     $db = new DataSource;
-    //     $sql = 'insert into master(id, pwd) values (:id, :pwd)';
+        $db = new DataSource;
+        $sql = 'insert into resident(room_id, name, account_name, rent, update_day, frequency, commission, guarantee) 
+        values (:room_id , :name, :account_name, :rent, :update_day, :frequency, :commission, :guarantee)
+        ';
 
-    //     $user->pwd = password_hash($user->pwd, PASSWORD_DEFAULT);
 
-    //     return $db->execute($sql, [
-    //         ':id' => $user->id,
-    //         ':pwd' => $user->pwd
-    //     ]);
+        return $db->execute($sql, [
+            ':room_id' => $resident->room_id,
+            ':name' => $resident->name,
+            ':account_name' => $resident->account_name,
+            ':rent' => $resident->rent,
+            ':update_day' => $resident->update_day,
+            ':frequency' => $resident->frequency,
+            ':commission' => $resident->commission,
+            ':guarantee' => $resident->guarantee
+        ]);
 
-    // }
+    }
 
 
 }

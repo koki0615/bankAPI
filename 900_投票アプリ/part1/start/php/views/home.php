@@ -12,7 +12,7 @@ function index() {
         <div class="items">
             <li><i class="fa-solid fa-house"></i><a href="home">ホーム</a></li>
             <li><i class="fa-regular fa-building"></i><a href="mansion">マンション</a></li>
-            <li><i class="fa-regular fa-building"></i><a href="register">住人</a></li>
+            <li><i class="fa-regular fa-building"></i><a href="register">住人登録</a></li>
             <li><i class="fa-regular fa-calendar-days"></i><a href="#">カレンダー</a></li>
             <li></li>
             <li></li>
