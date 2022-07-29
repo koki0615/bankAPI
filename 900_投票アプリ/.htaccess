@@ -1,0 +1,11 @@
+RewriteEngine On
+
+RewriteCond %{REQUEST_URI} !^/bank2
+RewriteRule .? /bank2/ [R,L]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule (part.+(end|start)) /bank2/$1/index.php
+
+
+php_flag display_errors on
