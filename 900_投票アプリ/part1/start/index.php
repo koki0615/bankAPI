@@ -35,6 +35,8 @@ require_once SOURCE_BASE .  'views/login.php';
 require_once SOURCE_BASE .  'views/register.php';
 require_once SOURCE_BASE .  'views/mansion.php';
 require_once SOURCE_BASE .  'views/resident.php';
+require_once SOURCE_BASE .  'views/delete.php';
+require_once SOURCE_BASE .  'views/vacancy.php';
 
 
 use function lib\route;

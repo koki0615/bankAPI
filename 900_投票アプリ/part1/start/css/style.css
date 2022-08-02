@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /*!
  * Bootstrap v4.5.3 (https://getbootstrap.com/)
  * Copyright 2011-2020 The Bootstrap Authors
@@ -11131,6 +11132,46 @@ tbody tr td {
   font-size: 14px;
   color: #554cd1;
   font-weight: 600;
+}
+
+.hidden_box {
+  margin: 2em 0;
+  /*前後の余白*/
+  padding: 0;
+}
+
+.hidden_box label {
+  padding: 15px;
+  font-weight: bold;
+  border: solid 2px white;
+  cursor: pointer;
+}
+
+/*ボタンホバー時*/
+.hidden_box label:hover {
+  background: #efefef;
+}
+
+/*チェックは見えなくする*/
+.hidden_box input {
+  display: none;
+}
+
+/*中身を非表示にしておく*/
+.hidden_box .hidden_show {
+  height: 0;
+  padding: 0;
+  overflow: hidden;
+  opacity: 0;
+  -webkit-transition: 0.8s;
+  transition: 0.8s;
+}
+
+/*クリックで中身表示*/
+.hidden_box input:checked ~ .hidden_show {
+  padding: 10px 0;
+  height: auto;
+  opacity: 1;
 }
 
 @media (max-width: 769px) {

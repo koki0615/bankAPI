@@ -38,6 +38,25 @@ class MansionQuery {
 
     }
 
+    public static function fetchMansionId($room) {
+
+        
+
+        $db = new DataSource;
+        $sql = '
+        select * from mansion m
+        where m.id = :id';
+
+        $result = $db->selectOne($sql, [
+            ':id' => $room->mansion_id
+        ], DataSource::CLS, MansionModel::class);
+
+        return $result;
+
+    }
+
+    
+
     
 
     // public static function insert($user) {

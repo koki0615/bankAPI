@@ -13,10 +13,6 @@ function index() {
         <div class="login-form bg-white p-4 shadow-sm mx-auto rounded">
           <form action="<?php echo CURRENT_URI; ?>" method="POST">
               <div class="form-group">
-                  <label for="room_id">部屋</label>
-                  <input id="room_id" type="text" name="room_id" class="form-control" placeholder="user_id">
-              </div> 
-              <div class="form-group">
                   <label for="name">氏名</label>
                   <input id="name" type="text" name="name" class="form-control" placeholder="山田太郎">
               </div>

@@ -1,7 +1,9 @@
 <?php 
-namespace view\mansion;
+namespace view\vacancy;
 
-function index($mansions) {
+use db\MansionQuery;
+
+function index($rooms,$mansion) {
 ?>
 
 
@@ -18,17 +20,20 @@ function index($mansions) {
                     <td>物件名</td>
                 </thead>
                 <?php 
-                foreach ($mansions as $mansion) {
-                    $mansion_url = get_url('resident?mansion_id=' . $mansion->id);
+                foreach ($rooms as $room) {
+                    $room_url = get_url('register?room_id=' . $room->room_id);
+                    $mansion = MansionQuery::fetchMansionId($room);
                 ?>
                     <tbody>
                     <tr>
                         <td class="">
-                            <img src="<?php echo BASE_IMAGE_PATH; ?>cat.jpg" alt="">
+                            <h3>
+                                <?php echo $mansion->name;?>
+                            </h3>
                         </td>
                         <td class="">
                             <h3>
-                               <a href="<?php echo $mansion_url; ?>"><?php echo $mansion->name; ?></a> 
+                               <a href="<?php echo $room_url; ?>"><?php echo $room->room_no; ?></a> 
                             </h3>
                         </td>
                     </tr>

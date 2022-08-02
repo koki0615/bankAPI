@@ -1,40 +1,12 @@
 <?php 
 namespace view\resident;
 
+use db\RoomQuery;
+use model\RoomModel;
+
 function index($residents,$mansion) {
 ?>
-    <body>
-    <section id="menu">
-        <div class="logo">
-            <img  src="php/images/logo.png" alt="">
-            <h2>はーとふるエステート</h2>
-        </div>
-        <div class="items">
-            <li><i class="fa-solid fa-house"></i><a href='home'>ホーム</a></li>
-            <li><i class="fa-regular fa-building"></i><a href="mansion">マンション</a></li>
-            <li><i class="fa-regular fa-building"></i><a href="register">住人</a></li>
-            <li><i class="fa-regular fa-calendar-days"></i><a href="#">カレンダー</a></li>
-            <li></li>
-            <li></li>
-            <li></li>
-        </div>
-    </section> 
-    <section id="interface">
-        <div class="navigation">
-            <div class="n1">
-                <div>
-                    <i id="menu-btn" class="fas fa-bars"></i>
-                </div>
-                <div class="search">
-                    <i class="far fa-search"></i>
-                    <input type="text" placeholder="Search">
-                </div>
-            </div>
-            <div class="profile">
-                <i class="far fa-bell"></i>
-                <img src="php/images/cat.jpg" alt="">   
-            </div>
-        </div>
+    
 
 
         <h3 class="i-name">
@@ -45,33 +17,66 @@ function index($residents,$mansion) {
         <div class="board">
             <table width="100%">
                 <thead>
-                    <td>氏名</td>
-                    <td>家賃</td>
-                    <td>更新日</td>
+                    <tr>
+                        <td>部屋番号</td>
+                        <td>氏名</td>
+                        <td>家賃</td>
+                        <td></td>
+                    </tr>
                 </thead>
                 <?php 
                 foreach ($residents as $resident) {
+                    $room = RoomQuery::fetchByRoomNo($resident);
                 ?>
                     <tbody>
                     <tr>
                         <td class="">
                             <h3>
-                                <?php echo $resident->name ?>
+                                <?php echo $room->room_no; ?>
                             </h3>
                         </td>
                         <td class="">
                             <h3>
-                               <?php echo  $resident->rent; ?>
+                               <?php echo  $resident->name; ?>
                             </h3>
                         </td>
                         <td class="">
                             <h3>
-                               <?php echo  $resident->update_day; ?>
+                               <?php echo  number_format($resident->rent)."円"; ?>
+                            </h3>
+                        </td>
+                        <td class="">
+                            <h3>
+                            <div class="hidden_box">
+                                <label for="label.<?php echo $resident->id?>">+</label>
+                                <input type="checkbox" id="label.<?php echo $resident->id?>"/>
+                                <div class="hidden_show">
+                                    <!--非表示ここから-->     
+      	                            <table>
+                                        <tr>
+                                            <th><h5>更新日</h5></th>
+                                            <td><h5><?php echo $resident->update_day; ?></h5></td>
+                                        </tr>
+                                        <tr>
+                                            <th><h5>更新頻度</h5></th>
+                                            <td><h5><?php echo $resident->frequency; ?>年</h5></td>
+                                        </tr>
+                                        <tr>
+                                            <th><h5>更新手数料</h5></th>
+                                            <td><h5><?php echo number_format($resident->commission); ?>円</h5></td>
+                                        </tr>
+                                        <tr>
+                                            <th><h5>保証会社</h5></th>
+                                            <td><h5><?php echo $resident->guarantee; ?></h5></td>
+                                        </tr>
+                                    </table>
+                                    <!--ここまで-->
+                                </div>
+                            </div>
                             </h3>
                         </td>
                     </tr>
-                </tbody>
-                
+                    </tbody>
                 <?php 
                 } ?>
             </table>

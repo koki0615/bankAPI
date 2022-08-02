@@ -18,6 +18,7 @@ class ResidentQuery {
         inner join room
             on resident.room_id = room.room_id
         where room.mansion_id = :id 
+        order by room_no asc
         ;';
 
         $result = $db->select($sql, [
@@ -28,39 +29,22 @@ class ResidentQuery {
 
     }
 
-    // public static function room() {
-
-    //     $db = new DataSource;
-    //     $sql = 'select * from room;';
-
-    //     $result = $db->select($sql, [
-
-    //     ], DataSource::CLS, RoomModel::class);
-        
-    //     return $result;
-    // }
-    
-    public static function fetchRoomId($resident) {
+    public static function fetchByResidentName($room) {
 
         
 
         $db = new DataSource;
-        $sql = '
-        select name from resident 
+        $sql = 'select * from resident
         where resident.room_id = :id
-        ';
+        ;';
 
-        $result = $db->select($sql, [
-            ':id' => $resident->room_id
+        $result = $db->selectOne($sql, [
+            ':id' => $room->room_id
         ], DataSource::CLS, ResidentModel::class);
 
         return $result;
 
     }
-
-    
-
-    
 
     public static function insert($resident) {
 
@@ -79,6 +63,20 @@ class ResidentQuery {
             ':frequency' => $resident->frequency,
             ':commission' => $resident->commission,
             ':guarantee' => $resident->guarantee
+        ]);
+
+    }
+
+    public static function delete($resident) {
+
+        $db = new DataSource;
+        $sql = 'delete from resident 
+        where resident.id = :id 
+        ';
+
+
+        return $db->execute($sql, [
+            ':id' => $resident->id
         ]);
 
     }

@@ -1,4 +1,7 @@
 <?php
+
+use db\RoomQuery;
+
 function get_param($key, $default_val, $is_post = true) {
 
     $arry = $is_post ? $_POST : $_GET;
@@ -42,4 +45,9 @@ function is_alnum($val) {
 
     return preg_match("/^[a-zA-Z0-9]+$/", $val);
     
+}
+
+function room_no($resident) {
+    $room_no = RoomQuery::fetchByRoomNo($resident);
+    echo $room_no;
 }
