@@ -28,6 +28,7 @@ class ResidentQuery {
         return $result;
 
     }
+    
 
     public static function fetchByResidentName($room) {
 
@@ -77,6 +78,51 @@ class ResidentQuery {
 
         return $db->execute($sql, [
             ':id' => $resident->id
+        ]);
+
+    }
+
+    public static function NotPay() {
+
+        $db = new DataSource;
+        $sql = 'select * from resident 
+        where resident.flag = 0
+        order by room_id asc
+        ';
+
+
+        return $db->select($sql, [
+
+        ], DataSource::CLS, ResidentModel::class);
+
+    }
+
+    public static function All() {
+
+        $db = new DataSource;
+        $sql = 'select * from resident 
+        order by room_id asc
+        ';
+
+
+        return $db->select($sql, [
+
+        ], DataSource::CLS, ResidentModel::class);
+
+    }
+    //契約更新日のアップデート
+    public static function UpDate($resident,$new_date) {
+
+        $db = new DataSource;
+        $sql = '
+        update resident 
+        set update_day = :day 
+        where id = :id
+        ';
+
+        return $db->execute($sql, [
+            ':id' => $resident->id,
+            ':day' => $new_date
         ]);
 
     }
